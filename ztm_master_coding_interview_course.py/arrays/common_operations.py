@@ -16,7 +16,7 @@ print(array_strings)
 
 
 """
-Pop operation will remove last element of the array, making this operation also linear in terms of time complexity.
+Pop operation will remove last element of the array, making this operation also constant in terms of time complexity.
 """
 array_strings.pop() # O(1)
 print(array_strings)
