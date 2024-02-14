@@ -4,6 +4,7 @@ class LinkedList {
             data: data,
             next: null
         }
+        this.tail = this.head
     }
 
 
@@ -21,11 +22,27 @@ class LinkedList {
             this.head = newNode
         }
     }
+
+
+    append_nodes (data) {
+        if (this.head == null) {
+            this.prepend(data)
+        }
+        else {
+            const newNode = {
+                data: data,
+                next: null
+            }
+            this.tail.next = newNode
+            this.tail = newNode
+        }
+    }
 }
 
 
 const MyLinkedList = new LinkedList(10)
 
 MyLinkedList.prepend(5)
+MyLinkedList.append_nodes(15)
 
 console.log(MyLinkedList)
