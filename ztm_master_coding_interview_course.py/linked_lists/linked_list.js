@@ -74,6 +74,7 @@ class LinkedList {
         if (index < 0) {
             throw new Error('Invalid index...')
         } else if (index === 0) {
+            // If the index is 0, remove the head node and update the head reference.
             this.head = this.head.next
             return
         }
@@ -85,6 +86,7 @@ class LinkedList {
             if (count === index - 1) {
                 // If you want to checkout which item will be removed, uncomment the following line:
                 //console.log("Node to remove ->", iterator.next.data);
+                 // If the next node is the target node, remove it by updating the next reference of the previous node.
                 iterator.next = iterator.next.next
                 return
             }
