@@ -65,6 +65,33 @@ class LinkedList {
             count++
             iterator = iterator.next
         }
+        throw new Error('Linked list out of bounds...')
+    }
+
+
+    removeNode (index) {
+        /* Remove node at index given. Time complexity O(n) if the index is greater than zero, if it is equals to zero time complexity would be O(1). */
+        if (index < 0) {
+            throw new Error('Invalid index...')
+        } else if (index === 0) {
+            this.head = this.head.next
+            return
+        }
+
+        let count = 0
+        let iterator = this.head
+
+        while (iterator !== null) {
+            if (count === index - 1) {
+                // If you want to checkout which item will be removed, uncomment the following line:
+                //console.log("Node to remove ->", iterator.next.data);
+                iterator.next = iterator.next.next
+                return
+            }
+            count++
+            iterator = iterator.next
+        }
+        throw new Error('Linked list out of bounds...')
     }
 
 
@@ -88,5 +115,6 @@ MyLinkedList.prepend(5)
 MyLinkedList.prepend(115)
 MyLinkedList.appendNodes(15)
 MyLinkedList.insertNodeAt(2, "Holi")
+MyLinkedList.removeNode(4)
 
 console.log(MyLinkedList.printOutLinkedList())
