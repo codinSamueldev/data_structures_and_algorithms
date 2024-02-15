@@ -23,7 +23,7 @@ class LinkedList:
             self.head = add_node
 
     
-    def print_out_linked_list(self) -> str | False:
+    def print_out_linked_list(self) -> str | bool:
         """ 
         Print out all nodes in the linked list. 
         Last node references to a None value.
