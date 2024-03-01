@@ -11,6 +11,7 @@ class LinkedList {
     constructor () {
         this.head = null
         this.tail = this.head
+        this.length = 0
     }
 
 
@@ -22,11 +23,13 @@ class LinkedList {
         if (this.head === null) {
             this.head = ADD_NODE
             this.tail = ADD_NODE
+            this.length++
         }
         else {
             ADD_NODE.next = this.head
             this.head.previous = ADD_NODE
             this.head = ADD_NODE
+            this.length++
         }
     }
 
@@ -42,6 +45,7 @@ class LinkedList {
             this.tail.next = NEW_NODE
             NEW_NODE.previous = this.tail
             this.tail = NEW_NODE
+            this.length++
         }
     }
 
@@ -65,7 +69,8 @@ class LinkedList {
                 ADD_NODE.next = iterator // Set the new node point to current node.
                 ADD_NODE.previous = iterator.previous // Set the current node's next pointer to the new node.
                 iterator.previous.next = ADD_NODE
-                return
+                this.length++
+            return
             }
             count++
             iterator = iterator.next
@@ -94,7 +99,8 @@ class LinkedList {
                 //console.log("Node to remove ->", iterator.next.data);
                 // Next node is the target node, remove it by updating the next reference of the previous node.
                 iterator.next = iterator.next.next
-                return
+                this.length--
+            return
             }
             count++
             iterator = iterator.next
@@ -102,6 +108,24 @@ class LinkedList {
         throw new Error('Linked list out of bounds...')
     }
 
+    /*
+    reverse () {
+        // TODO...
+        let counter = 0
+        let auxiliary
+
+        while (counter < this.length) {
+            let currentNode = this.head
+            let currentLastNode = this.tail
+            currentLastNode = this.head
+            this.head = this.tail
+            currentNode = currentNode.next
+
+
+            counter++
+        }
+    }
+    */
 
     printOutLinkedList () {
         let iterator = this.head
@@ -126,5 +150,6 @@ MyLinkedList.appendNodes(15)
 MyLinkedList.appendNodes("Last")
 MyLinkedList.insertNodeAt(2, "I am here")
 MyLinkedList.removeNode(4)
+// MyLinkedList.reverse()
 
 console.log(MyLinkedList.printOutLinkedList())
