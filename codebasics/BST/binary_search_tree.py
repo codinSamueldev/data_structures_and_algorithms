@@ -24,6 +24,23 @@ class BinarySearchTreeNode:
                 self.right = BinarySearchTreeNode(data)
 
 
+    def search_node(self, value: Any) -> bool:
+        if value == self.data:
+            return True
+        
+        if value < self.data:
+            if self.left:
+                return self.left.search_node(value)
+            else:
+                return False
+        
+        if value > self.data:
+            if self.right:
+                return self.right.search_node(value)
+            else:
+                return False
+
+
     def in_order_traversal(self) -> list:
         array_sorted = list()
 
@@ -53,3 +70,7 @@ if __name__ == '__main__':
 
     create_tree = build_tree(random_array)
     print("El arbol binario ordenado es ->", create_tree.in_order_traversal())
+    
+    node_to_search = int(input("\nWhich element would you like to search? -> "))
+    print("Element was found? ->", create_tree.search_node(node_to_search))
+
